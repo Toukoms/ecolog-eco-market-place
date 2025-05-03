@@ -27,10 +27,10 @@ const PRODUCTS = [
     name: "Vary Gasy",
     image: "/vary.jpg",
     category: "Épicerie",
-    originalPrice: 4000,
+    originalPrice: 4300,
     expiryDate: "2025-08-15",
     reason: "Emballage abîmé",
-    discount: 25,
+    discount: 12,
     unit: "kg",
   },
   {
@@ -58,7 +58,7 @@ const PRODUCTS = [
   {
     id: 7,
     name: "Farine de blé",
-    image: "https://images.unsplash.com/photo-1600695771651-2f29084c9f1d",
+    image: "/farine.png",
     category: "Épicerie",
     originalPrice: 4000,
     expiryDate: "2025-08-20",
@@ -69,7 +69,7 @@ const PRODUCTS = [
   {
     id: 8,
     name: "Huile d'olive",
-    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5",
+    image: "/huile.png",
     category: "Épicerie",
     originalPrice: 11000,
     expiryDate: "2025-10-15",
@@ -80,7 +80,7 @@ const PRODUCTS = [
   {
     id: 9,
     name: "Sucre en poudre",
-    image: "https://images.unsplash.com/photo-1589867764639-6e7836ffeae4",
+    image: "/sugar.jpg",
     category: "Épicerie",
     originalPrice: 5600,
     expiryDate: "2026-01-15",
@@ -89,6 +89,10 @@ const PRODUCTS = [
     unit: "kg",
   },
 ];
+
+const calculateDiscount = (originalPrice, discount) => {
+  return Number((originalPrice - (originalPrice * discount) / 100).toFixed(0));
+};
 
 // Categories
 const CATEGORIES = [
@@ -115,9 +119,12 @@ const Products = () => {
       .includes(searchTerm.toLowerCase());
     const matchesCategory =
       selectedCategory === "Tous" || product.category === selectedCategory;
+    const discountPrice = calculateDiscount(
+      product.originalPrice,
+      product.discount
+    );
     const matchesPrice =
-      (product.discount / 100) * product.originalPrice >= priceRange[0] &&
-      (product.discount / 100) * product.originalPrice <= priceRange[1];
+      discountPrice >= priceRange[0] && discountPrice <= priceRange[1];
 
     const expiryDate = new Date(product.expiryDate);
     const today = new Date();
@@ -132,8 +139,8 @@ const Products = () => {
 
   // Sort products
   const sortedProducts = [...filteredProducts].sort((a, b) => {
-    const discountA = (a.discount / 100) * a.originalPrice;
-    const discountB = (b.discount / 100) * b.originalPrice;
+    const discountA = calculateDiscount(a.originalPrice, a.discount);
+    const discountB = calculateDiscount(b.originalPrice, b.discount);
     switch (sortBy) {
       case "price-low":
         return discountA - discountB;
@@ -311,6 +318,8 @@ const Products = () => {
                             src={product.image}
                             alt={product.name}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            decoding="async"
                           />
                           <Badge className="absolute top-2 right-2 bg-ecologis-orange">
                             -{product.discount}%
@@ -341,13 +350,13 @@ const Products = () => {
                           </span>
                           <div className="flex items-center mt-1">
                             <span className="text-gray-500 line-through text-sm mr-2">
-                              {product.originalPrice.toFixed(2)} Ar
+                              {product.originalPrice.toFixed(0)} Ar
                             </span>
                             <span className="text-ecologis-green font-bold text-lg">
-                              {(
-                                (product.discount / 100) *
-                                product.originalPrice
-                              ).toFixed(2)}{" "}
+                              {calculateDiscount(
+                                product.originalPrice,
+                                product.discount
+                              )}{" "}
                               Ar
                             </span>
                             <span className="text-gray-500 font-semibold text-lg">
