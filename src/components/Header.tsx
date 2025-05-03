@@ -30,7 +30,7 @@ const Header = () => {
           <Button variant="ghost" size="icon" className="relative" asChild>
             <Link to="/cart">
               <ShoppingCart className="h-5 w-5" />
-              <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center bg-ecologis-orange text-white p-0">0</Badge>
+              <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center bg-ecologis-orange text-white p-0">3</Badge>
             </Link>
           </Button>
           
@@ -76,6 +76,13 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Contact
+            </Link>
+            <Link 
+              to="/cart" 
+              className="py-2 px-4 hover:bg-ecologis-green/10 rounded transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Panier
             </Link>
           </nav>
         </div>

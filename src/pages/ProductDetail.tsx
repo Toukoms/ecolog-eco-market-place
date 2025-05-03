@@ -6,83 +6,83 @@ import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { ShoppingCart, ArrowLeft } from 'lucide-react';
 
-// Mock product data
+// Mock product data with essential items
 const PRODUCTS = [
   {
     id: 1,
-    name: "Carottes tordues",
-    image: "https://images.unsplash.com/photo-1598170845053-15e1d5b7c4f7",
+    name: "Pâtes complètes",
+    image: "https://images.unsplash.com/photo-1551462147-ff29053bfc14",
     gallery: [
-      "https://images.unsplash.com/photo-1598170845053-15e1d5b7c4f7",
-      "https://images.unsplash.com/photo-1447175008436-054170c2e979",
-      "https://images.unsplash.com/photo-1590165482129-1b8b27698780"
+      "https://images.unsplash.com/photo-1551462147-ff29053bfc14",
+      "https://images.unsplash.com/photo-1612966448592-9c2bf5684841",
+      "https://images.unsplash.com/photo-1626072778346-0ab6604d39c4"
     ],
-    category: "Légumes",
-    originalPrice: 2.99,
-    discountPrice: 1.49,
-    expiryDate: "2025-05-10",
-    reason: "Esthétique",
+    category: "Épicerie",
+    originalPrice: 1.99,
+    discountPrice: 0.99,
+    expiryDate: "2025-07-20",
+    reason: "Emballage abîmé",
     discount: 50,
-    description: "Ces carottes ont des formes inhabituelles, mais leur goût et leurs qualités nutritionnelles sont identiques à celles des carottes standards. Parfaites pour les soupes, les jus ou simplement râpées en salade.",
-    origin: "France",
+    description: "Ces pâtes complètes sont riches en fibres et parfaites pour une alimentation saine. Leur emballage est légèrement abîmé mais le produit à l'intérieur est intact et de qualité optimale.",
+    origin: "Italie",
     nutrition: {
-      calories: "41 kcal/100g",
-      carbs: "10g/100g",
-      protein: "0.9g/100g",
-      fat: "0.2g/100g"
+      calories: "350 kcal/100g",
+      carbs: "70g/100g",
+      protein: "12g/100g",
+      fat: "2g/100g"
     }
   },
   {
     id: 2,
-    name: "Pommes irrégulières",
-    image: "https://images.unsplash.com/photo-1567306226408-c302e35a5ba3",
+    name: "Riz blanc",
+    image: "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6",
     gallery: [
-      "https://images.unsplash.com/photo-1567306226408-c302e35a5ba3",
-      "https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a",
-      "https://images.unsplash.com/photo-1579613832125-5d34a13ffe2a"
+      "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6",
+      "https://images.unsplash.com/photo-1564834744159-ff0ea41ba4b9",
+      "https://images.unsplash.com/photo-1621317151729-78219f947f3e"
     ],
-    category: "Fruits",
-    originalPrice: 3.49,
-    discountPrice: 1.75,
-    expiryDate: "2025-05-08",
-    reason: "Esthétique",
+    category: "Épicerie",
+    originalPrice: 2.49,
+    discountPrice: 1.25,
+    expiryDate: "2025-08-15",
+    reason: "Emballage abîmé",
     discount: 50,
-    description: "Ces pommes présentent quelques imperfections visuelles qui n'affectent en rien leur goût délicieux et leur fraîcheur. Idéales pour une consommation directe, en compote ou en pâtisserie.",
+    description: "Ce riz blanc de qualité supérieure est parfait pour accompagner vos plats. L'emballage présente quelques défauts mais le riz à l'intérieur est parfaitement intact et de bonne qualité.",
     origin: "France",
     nutrition: {
-      calories: "52 kcal/100g",
-      carbs: "14g/100g",
-      protein: "0.3g/100g",
-      fat: "0.2g/100g"
+      calories: "360 kcal/100g",
+      carbs: "80g/100g",
+      protein: "7g/100g",
+      fat: "0.5g/100g"
     }
   },
   {
     id: 3,
-    name: "Yaourts nature",
-    image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e",
+    name: "Lait demi-écrémé",
+    image: "https://images.unsplash.com/photo-1550583724-b2692b85b150",
     gallery: [
-      "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e",
-      "https://images.unsplash.com/photo-1488477181946-6428a0291777",
-      "https://images.unsplash.com/photo-1557434440-415fd2470697"
+      "https://images.unsplash.com/photo-1550583724-b2692b85b150",
+      "https://images.unsplash.com/photo-1563636619-e9143da7973b",
+      "https://images.unsplash.com/photo-1529258283598-8d6fe60b27f4"
     ],
     category: "Produits frais",
-    originalPrice: 2.50,
-    discountPrice: 1.25,
-    expiryDate: "2025-05-06",
+    originalPrice: 1.70,
+    discountPrice: 0.85,
+    expiryDate: "2025-05-10",
     reason: "Date courte",
     discount: 50,
-    description: "Ces yaourts sont parfaitement bons mais leur date de péremption est proche. Ils sont riches en probiotiques bénéfiques pour votre digestion et peuvent être consommés nature ou agrémentés de fruits.",
+    description: "Ce lait demi-écrémé est riche en calcium et de très bonne qualité. Sa date de péremption est plus proche que d'habitude, mais il est parfaitement consommable jusqu'à la date indiquée.",
     origin: "France",
     nutrition: {
-      calories: "59 kcal/100g",
-      carbs: "4.7g/100g",
-      protein: "3.5g/100g",
-      fat: "3.2g/100g"
+      calories: "46 kcal/100ml",
+      carbs: "4.8g/100ml",
+      protein: "3.2g/100ml",
+      fat: "1.6g/100ml"
     }
   },
   {
     id: 4,
-    name: "Pain complet",
+    name: "Pain de mie complet",
     image: "https://images.unsplash.com/photo-1509440159596-0249088772ff",
     gallery: [
       "https://images.unsplash.com/photo-1509440159596-0249088772ff",
@@ -95,7 +95,7 @@ const PRODUCTS = [
     expiryDate: "2025-05-04",
     reason: "Date courte",
     discount: 55,
-    description: "Ce pain complet est riche en fibres et a un goût délicieux. Sa date de consommation est proche, mais il reste frais et peut être congelé pour une conservation prolongée.",
+    description: "Ce pain de mie complet est riche en fibres et a un goût délicieux. Sa date de consommation est proche, mais il reste frais et peut être congelé pour une conservation prolongée.",
     origin: "Boulangerie locale",
     nutrition: {
       calories: "265 kcal/100g",

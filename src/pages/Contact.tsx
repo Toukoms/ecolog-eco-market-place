@@ -3,194 +3,106 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Checkbox } from '@/components/ui/checkbox';
-import { useToast } from '@/hooks/use-toast';
+import { toast } from 'sonner';
 
 const Contact = () => {
-  const { toast } = useToast();
-  
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast({
-      title: "Message envoyé !",
-      description: "Nous vous répondrons dans les meilleurs délais.",
-      variant: "success",
+    
+    // This would typically submit the form data to a server
+    // For now, we'll just show a success message
+    toast("Message envoyé", {
+      description: "Nous vous répondrons dans les plus brefs délais.",
+      // Make sure to use a valid variant type for the toast
+      // success is not a valid variant for the toast component
     });
   };
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-ecologis-green text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Contactez-nous</h1>
-          <p className="text-xl max-w-3xl mx-auto">
-            Des questions, des suggestions ou envie de collaborer ? N'hésitez pas à nous contacter.
+    <div className="bg-gray-50 min-h-screen">
+      <div className="container mx-auto px-4 py-12">
+        <div className="max-w-2xl mx-auto">
+          <h1 className="text-3xl font-bold mb-2">Contactez-nous</h1>
+          <p className="text-gray-600 mb-8">
+            Vous avez une question ou besoin d'aide ? N'hésitez pas à nous contacter.
           </p>
-        </div>
-      </section>
-      
-      {/* Contact Form Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Information */}
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Nos coordonnées</h2>
-              
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Adresse</h3>
-                  <p className="text-gray-700">
-                    123 Avenue de la Nature<br />
-                    75001 Paris<br />
-                    France
-                  </p>
-                </div>
-                
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Contact</h3>
-                  <p className="text-gray-700">
-                    Téléphone: +33 (0)1 23 45 67 89<br />
-                    Email: contact@ecologis.fr
-                  </p>
-                </div>
-                
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Horaires</h3>
-                  <p className="text-gray-700">
-                    Lundi - Vendredi: 9h00 - 18h00<br />
-                    Samedi: 10h00 - 16h00<br />
-                    Dimanche: Fermé
-                  </p>
-                </div>
-              </div>
-              
-              {/* Map Placeholder */}
-              <div className="mt-8 bg-gray-200 rounded-lg h-64 flex items-center justify-center">
-                <p className="text-gray-600">Carte interactive ici</p>
-              </div>
-            </div>
-            
-            {/* Contact Form */}
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Envoyez-nous un message</h2>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstname">Prénom</Label>
-                    <Input id="firstname" placeholder="Votre prénom" required />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="lastname">Nom</Label>
-                    <Input id="lastname" placeholder="Votre nom" required />
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="votre.email@exemple.com" required />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Téléphone (optionnel)</Label>
-                  <Input id="phone" type="tel" placeholder="Votre numéro de téléphone" />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label>Sujet de votre message</Label>
-                  <RadioGroup defaultValue="question">
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="question" id="question" />
-                      <Label htmlFor="question">Question générale</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="order" id="order" />
-                      <Label htmlFor="order">Question sur une commande</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="partnership" id="partnership" />
-                      <Label htmlFor="partnership">Proposition de partenariat</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="other" id="other" />
-                      <Label htmlFor="other">Autre</Label>
-                    </div>
-                  </RadioGroup>
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="message">Votre message</Label>
-                  <Textarea 
-                    id="message" 
-                    placeholder="Détaillez votre demande ici..." 
-                    className="min-h-[150px]" 
-                    required 
-                  />
-                </div>
-                
-                <div className="flex items-start space-x-2">
-                  <Checkbox id="terms" required />
-                  <div className="grid gap-1.5 leading-none">
-                    <Label htmlFor="terms" className="text-sm text-gray-600">
-                      J'accepte que mes données soient traitées conformément à la{" "}
-                      <a href="/legal/privacy" className="text-ecologis-green hover:underline">
-                        politique de confidentialité
-                      </a>
-                      .
-                    </Label>
-                  </div>
-                </div>
-                
-                <Button type="submit" className="w-full bg-ecologis-green hover:bg-ecologis-green-dark">
-                  Envoyer le message
-                </Button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">Questions fréquentes</h2>
           
-          <div className="max-w-3xl mx-auto space-y-6">
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h3 className="font-semibold text-lg mb-2">Comment puis-je suivre ma commande ?</h3>
-              <p className="text-gray-700">
-                Une fois votre commande expédiée, vous recevrez un e-mail contenant un lien de suivi. Vous pouvez également consulter l'état de votre commande dans votre compte client.
-              </p>
-            </div>
+          <div className="bg-white p-6 rounded-lg shadow-sm border">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                    Nom
+                  </label>
+                  <Input id="name" placeholder="Votre nom" required />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                    Email
+                  </label>
+                  <Input id="email" type="email" placeholder="votre@email.com" required />
+                </div>
+              </div>
+              
+              <div>
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                  Sujet
+                </label>
+                <Input id="subject" placeholder="Sujet de votre message" required />
+              </div>
+              
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                  Message
+                </label>
+                <Textarea 
+                  id="message" 
+                  placeholder="Écrivez votre message ici..." 
+                  rows={6}
+                  required
+                />
+              </div>
+              
+              <Button type="submit" className="w-full bg-ecologis-green hover:bg-ecologis-green-dark">
+                Envoyer le message
+              </Button>
+            </form>
             
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h3 className="font-semibold text-lg mb-2">Quelles sont les zones de livraison ?</h3>
-              <p className="text-gray-700">
-                Nous livrons actuellement à Paris et sa proche banlieue. Nous travaillons à étendre notre zone de livraison dans les prochains mois.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h3 className="font-semibold text-lg mb-2">Les produits sont-ils vraiment de bonne qualité ?</h3>
-              <p className="text-gray-700">
-                Oui ! Tous nos produits sont soigneusement vérifiés avant d'être mis en vente. Ils sont parfaitement comestibles et leurs qualités nutritionnelles sont identiques aux produits standards.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h3 className="font-semibold text-lg mb-2">Comment devenir un partenaire fournisseur ?</h3>
-              <p className="text-gray-700">
-                Si vous êtes producteur, transformateur ou distributeur et que vous avez des produits à valoriser, contactez-nous via le formulaire ci-dessus en sélectionnant "Proposition de partenariat".
-              </p>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="rounded-full bg-ecologis-green/10 h-12 w-12 flex items-center justify-center mx-auto mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-ecologis-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold mb-1">Email</h3>
+                <p className="text-sm text-gray-500">contact@ecologis.fr</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="rounded-full bg-ecologis-green/10 h-12 w-12 flex items-center justify-center mx-auto mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-ecologis-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold mb-1">Téléphone</h3>
+                <p className="text-sm text-gray-500">01 23 45 67 89</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="rounded-full bg-ecologis-green/10 h-12 w-12 flex items-center justify-center mx-auto mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-ecologis-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold mb-1">Adresse</h3>
+                <p className="text-sm text-gray-500">123 Rue de l'Innovation, 75000 Paris</p>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 };

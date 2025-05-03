@@ -10,87 +10,10 @@ import { Label } from '@/components/ui/label';
 import { ShoppingCart } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
-// Mock product data
+// Updated mock product data with essential items
 const PRODUCTS = [
   {
     id: 1,
-    name: "Carottes tordues",
-    image: "https://images.unsplash.com/photo-1598170845053-15e1d5b7c4f7",
-    category: "Légumes",
-    originalPrice: 2.99,
-    discountPrice: 1.49,
-    expiryDate: "2025-05-10",
-    reason: "Esthétique",
-    discount: 50
-  },
-  {
-    id: 2,
-    name: "Pommes irrégulières",
-    image: "https://images.unsplash.com/photo-1567306226408-c302e35a5ba3",
-    category: "Fruits",
-    originalPrice: 3.49,
-    discountPrice: 1.75,
-    expiryDate: "2025-05-08",
-    reason: "Esthétique",
-    discount: 50
-  },
-  {
-    id: 3,
-    name: "Yaourts nature",
-    image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e",
-    category: "Produits frais",
-    originalPrice: 2.50,
-    discountPrice: 1.25,
-    expiryDate: "2025-05-06",
-    reason: "Date courte",
-    discount: 50
-  },
-  {
-    id: 4,
-    name: "Pain complet",
-    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff",
-    category: "Boulangerie",
-    originalPrice: 2.20,
-    discountPrice: 0.99,
-    expiryDate: "2025-05-04",
-    reason: "Date courte",
-    discount: 55
-  },
-  {
-    id: 5,
-    name: "Tomates cerises",
-    image: "https://images.unsplash.com/photo-1561155707-3f9e6749b233",
-    category: "Légumes",
-    originalPrice: 2.99,
-    discountPrice: 1.49,
-    expiryDate: "2025-05-09",
-    reason: "Surplus",
-    discount: 50
-  },
-  {
-    id: 6,
-    name: "Concombre courbé",
-    image: "https://images.unsplash.com/photo-1604977042946-1eecc30f269e",
-    category: "Légumes",
-    originalPrice: 1.79,
-    discountPrice: 0.89,
-    expiryDate: "2025-05-08",
-    reason: "Esthétique",
-    discount: 50
-  },
-  {
-    id: 7,
-    name: "Oranges bio",
-    image: "https://images.unsplash.com/photo-1582979512210-99b6a53386f9",
-    category: "Fruits",
-    originalPrice: 4.99,
-    discountPrice: 2.99,
-    expiryDate: "2025-05-07",
-    reason: "Calibre irrégulier",
-    discount: 40
-  },
-  {
-    id: 8,
     name: "Pâtes complètes",
     image: "https://images.unsplash.com/photo-1551462147-ff29053bfc14",
     category: "Épicerie",
@@ -101,15 +24,92 @@ const PRODUCTS = [
     discount: 50
   },
   {
-    id: 9,
-    name: "Petit-pois surgelés",
-    image: "https://images.unsplash.com/photo-1589927986089-35812388d1f4",
-    category: "Surgelés",
+    id: 2,
+    name: "Riz blanc",
+    image: "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6",
+    category: "Épicerie",
     originalPrice: 2.49,
-    discountPrice: 1.49,
+    discountPrice: 1.25,
     expiryDate: "2025-08-15",
     reason: "Emballage abîmé",
-    discount: 40
+    discount: 50
+  },
+  {
+    id: 3,
+    name: "Lait demi-écrémé",
+    image: "https://images.unsplash.com/photo-1550583724-b2692b85b150",
+    category: "Produits frais",
+    originalPrice: 1.70,
+    discountPrice: 0.85,
+    expiryDate: "2025-05-10",
+    reason: "Date courte",
+    discount: 50
+  },
+  {
+    id: 4,
+    name: "Pain de mie complet",
+    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff",
+    category: "Boulangerie",
+    originalPrice: 2.20,
+    discountPrice: 0.99,
+    expiryDate: "2025-05-04",
+    reason: "Date courte",
+    discount: 55
+  },
+  {
+    id: 5,
+    name: "Pommes de terre",
+    image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655",
+    category: "Légumes",
+    originalPrice: 2.49,
+    discountPrice: 1.29,
+    expiryDate: "2025-05-15",
+    reason: "Calibre irrégulier",
+    discount: 48
+  },
+  {
+    id: 6,
+    name: "Œufs bio",
+    image: "https://images.unsplash.com/photo-1506976785307-8732e854ad03",
+    category: "Produits frais",
+    originalPrice: 3.99,
+    discountPrice: 2.49,
+    expiryDate: "2025-05-12",
+    reason: "Calibre irrégulier",
+    discount: 38
+  },
+  {
+    id: 7,
+    name: "Farine de blé",
+    image: "https://images.unsplash.com/photo-1600695771651-2f29084c9f1d",
+    category: "Épicerie",
+    originalPrice: 1.89,
+    discountPrice: 0.95,
+    expiryDate: "2025-08-20",
+    reason: "Emballage abîmé",
+    discount: 50
+  },
+  {
+    id: 8,
+    name: "Huile d'olive",
+    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5",
+    category: "Épicerie",
+    originalPrice: 5.99,
+    discountPrice: 3.49,
+    expiryDate: "2025-10-15",
+    reason: "Emballage abîmé",
+    discount: 42
+  },
+  {
+    id: 9,
+    name: "Sucre en poudre",
+    image: "https://images.unsplash.com/photo-1589867764639-6e7836ffeae4",
+    category: "Épicerie",
+    originalPrice: 1.49,
+    discountPrice: 0.79,
+    expiryDate: "2026-01-15",
+    reason: "Emballage abîmé",
+    discount: 47
   },
 ];
 
