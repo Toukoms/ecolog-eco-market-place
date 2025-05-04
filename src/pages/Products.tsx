@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Slider } from "@/components/ui/slider";
+import { calculateDiscount } from "@/lib/discount";
 import { ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -24,19 +25,19 @@ const PRODUCTS = [
   },
   {
     id: 2,
-    name: "Vary Gasy",
-    image: "/vary.jpg",
+    name: "Sardine",
+    image: "/sardines.jpg",
     category: "Épicerie",
-    originalPrice: 4300,
+    originalPrice: 4500,
     expiryDate: "2025-08-15",
     reason: "Emballage abîmé",
-    discount: 12,
-    unit: "kg",
+    discount: 26,
+    unit: "unité",
   },
   {
     id: 3,
     name: "Lait demi-écrémé",
-    image: "https://images.unsplash.com/photo-1550583724-b2692b85b150",
+    image: "/lait.png",
     category: "Produits frais",
     originalPrice: 8000,
     expiryDate: "2025-06-10",
@@ -68,8 +69,8 @@ const PRODUCTS = [
   },
   {
     id: 8,
-    name: "Huile d'olive",
-    image: "/huile.png",
+    name: "Huile de tournesol",
+    image: "/huile.jpg",
     category: "Épicerie",
     originalPrice: 11000,
     expiryDate: "2025-10-15",
@@ -89,10 +90,6 @@ const PRODUCTS = [
     unit: "kg",
   },
 ];
-
-const calculateDiscount = (originalPrice, discount) => {
-  return Number((originalPrice - (originalPrice * discount) / 100).toFixed(0));
-};
 
 // Categories
 const CATEGORIES = [

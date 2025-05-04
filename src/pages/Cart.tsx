@@ -12,14 +12,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 
-// Mock cart data
 const initialCart = [
   {
     id: 1,
     name: "Spaghetti",
     image: "/spaghetti.png",
     category: "Épicerie",
-    price: 2856,
+    price: 2850,
     quantity: 2,
     expiryDate: "2025-07-20",
   },
@@ -28,7 +27,7 @@ const initialCart = [
     name: "Vary Gasy",
     image: "/vary.jpg",
     category: "Épicerie",
-    price: 3784,
+    price: 3750,
     quantity: 12,
     expiryDate: "2025-08-15",
     unit: "kg",
@@ -38,7 +37,7 @@ const initialCart = [
     name: "Mofo dopaina",
     image: "/pain.png",
     category: "Boulangerie",
-    price: 372,
+    price: 350,
     quantity: 38,
     expiryDate: "2025-08-04",
     unit: "unité",
